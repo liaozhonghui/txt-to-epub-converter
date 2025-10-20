@@ -1,0 +1,29 @@
+# 依赖
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 输入和输出目录
+input/
+output/
+
+# 输出文件
+*.epub
+
+# 临时文件和测试文件
+*.tmp
+*.temp
+test/*.txt
+test/*.epub
+
+# 编辑器和系统文件
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log

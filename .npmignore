@@ -1,0 +1,30 @@
+# 开发和测试文件
+test/
+*.log
+.nyc_output
+coverage/
+
+# 本地测试和输出文件
+input/
+*.epub
+*.txt
+
+# Git 和编辑器
+.git/
+.gitignore
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node 模块和缓存
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 临时文件
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db

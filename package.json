@@ -1,0 +1,54 @@
+{
+  "name": "txt-to-epub-converter",
+  "version": "1.0.0",
+  "description": "一个功能强大的 TXT 小说文件转 EPUB 电子书转换器，支持自动章节识别、广告过滤和自定义样式",
+  "main": "lib/index.js",
+  "bin": {
+    "txt2epub": "bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "test": "node test/basic.js"
+  },
+  "files": [
+    "lib/",
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "epub",
+    "converter",
+    "txt",
+    "novel",
+    "ebook",
+    "chinese",
+    "小说",
+    "电子书",
+    "转换器",
+    "命令行工具",
+    "cli"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/txt-to-epub-converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/txt-to-epub-converter/issues"
+  },
+  "homepage": "https://github.com/yourusername/txt-to-epub-converter#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "commander": "^9.5.0",
+    "epub-gen": "^0.1.0"
+  },
+  "devDependencies": {}
+}
