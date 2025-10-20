@@ -15,9 +15,10 @@ program
   .option('-o, --output <path>', '输出的 EPUB 文件路径 (可选，默认基于输入文件名)')
   .option('-t, --title <title>', '书籍标题 (可选，默认基于文件名)')
   .option('-a, --author <author>', '作者名称 (可选，默认为"未知作者")')
+  .option('-m, --maker <maker>', '制作者名称 (必需)')
   .option('-c, --cover <path>', '封面图片路径 (可选)')
   .option('-d, --description <desc>', '书籍描述 (可选)')
-  .option('--no-ads-filter', '禁用广告过滤功能')
+  .option('--ad-keywords <keywords>', '广告关键词，用逗号分隔 (可选，不传则不过滤广告)')
   .option('--verbose', '显示详细输出信息')
   .parse();
 
@@ -27,8 +28,16 @@ const options = program.opts();
 if (!options.file) {
   console.error('❌ 错误: 必须指定输入文件路径 (-f, --file)');
   console.log('\n使用示例:');
-  console.log('  txt2epub -f novel.txt -a "作者名" -t "书名"');
-  console.log('  txt2epub --file novel.txt --author "作者名" --title "书名" --cover cover.jpg');
+  console.log('  txt2epub -f novel.txt -a "作者名" -t "书名" -m "制作者"');
+  console.log('  txt2epub --file novel.txt --author "作者名" --title "书名" --maker "制作者" --cover cover.jpg');
+  process.exit(1);
+}
+
+if (!options.maker) {
+  console.error('❌ 错误: 必须指定制作者名称 (-m, --maker)');
+  console.log('\n使用示例:');
+  console.log('  txt2epub -f novel.txt -a "作者名" -t "书名" -m "制作者"');
+  console.log('  txt2epub --file novel.txt --author "作者名" --title "书名" --maker "制作者"');
   process.exit(1);
 }
 
@@ -49,8 +58,14 @@ const convertOptions = {
   outputFile: options.output || path.join(fileInfo.dir, `${fileInfo.name}.epub`),
   title: options.title || defaultTitle,
   author: options.author || '未知作者',
+  maker: options.maker,
   description: options.description
 };
+
+// 处理广告关键词参数
+if (options.adKeywords) {
+  convertOptions.adKeywords = options.adKeywords.split(',').map(keyword => keyword.trim()).filter(keyword => keyword.length > 0);
+}
 
 // 添加封面（如果指定）
 if (options.cover) {
@@ -69,13 +84,19 @@ console.log(`   输入文件: ${convertOptions.inputFile}`);
 console.log(`   输出文件: ${convertOptions.outputFile}`);
 console.log(`   书籍标题: ${convertOptions.title}`);
 console.log(`   作者: ${convertOptions.author}`);
+console.log(`   制作者: ${convertOptions.maker}`);
 if (convertOptions.cover) {
   console.log(`   封面图片: ${convertOptions.cover}`);
 }
 if (convertOptions.description) {
   console.log(`   书籍描述: ${convertOptions.description}`);
 }
-console.log(`   广告过滤: ${options.adsFilter !== false ? '启用' : '禁用'}`);
+if (convertOptions.adKeywords && convertOptions.adKeywords.length > 0) {
+  console.log(`   广告关键词: ${convertOptions.adKeywords.join(', ')}`);
+  console.log(`   广告过滤: 启用`);
+} else {
+  console.log(`   广告过滤: 禁用`);
+}
 console.log('');
 
 // 执行转换
