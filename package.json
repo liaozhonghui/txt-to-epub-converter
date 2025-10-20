@@ -30,18 +30,18 @@
     "cli"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "your.email@example.com"
+    "name": "liaozhonghui",
+    "email": "2997721846@qq.com"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/txt-to-epub-converter.git"
+    "url": "https://github.com/liaozhonghui/txt-to-epub-converter.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/txt-to-epub-converter/issues"
+    "url": "https://github.com/liaozhonghui/txt-to-epub-converter/issues"
   },
-  "homepage": "https://github.com/yourusername/txt-to-epub-converter#readme",
+  "homepage": "https://github.com/liaozhonghui/txt-to-epub-converter#readme",
   "engines": {
     "node": ">=12.0.0"
   },
