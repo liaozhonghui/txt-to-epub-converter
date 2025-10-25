@@ -1,6 +1,6 @@
 {
   "name": "txt-to-epub-converter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一个功能强大的 TXT 小说文件转 EPUB 电子书转换器，支持自动章节识别、广告过滤和自定义样式",
   "main": "lib/index.js",
   "bin": {
